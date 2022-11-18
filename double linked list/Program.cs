@@ -51,7 +51,30 @@ namespace double_linked_list
                 START = newNode;
                 return;
             }
+            /*if the node is to be inserted at between two node*/
+            Node previous, current;
+            for (current = previous = START;
+                 current != null && nim >= current.noMhs;
+                 previous = current, current = current.next)
+            {
+                if (nim == current.noMhs)
+                {
+                    Console.WriteLine("\nDuplicate numbers not allowed");
+                }
+            }
+            /* On the execution of the above for loop, prev and
+             * current will point to those nodes
+             * between which the new nod is to be inserted */
+            newNode.next = current;
+            newNode.prev = previous;
 
+            //if the node is to be inserted at the end of the list 
+            if(current == null)
+            {
+                newNode.next = null;
+                previous.next = newNode;
+                return;
+            }
         }
     }
 }
